@@ -16,7 +16,7 @@ exports.ProductController = {
         try {
             const product = yield product_service_1.ProductService.createProduct(req.body);
             res.status(201).json({
-                message: 'Bicycle created successfully',
+                message: "Bicycle created successfully",
                 success: true,
                 data: product,
             });
@@ -24,14 +24,14 @@ exports.ProductController = {
         catch (error) {
             res
                 .status(400)
-                .json({ message: 'Error creating bicycle', success: false, error });
+                .json({ message: "Error creating bicycle", success: false, error });
         }
     }),
     getAllProducts: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const products = yield product_service_1.ProductService.getAllProducts();
             res.json({
-                message: 'Bicycles retrieved successfully',
+                message: "Bicycles retrieved successfully",
                 success: true,
                 data: products,
             });
@@ -39,33 +39,38 @@ exports.ProductController = {
         catch (error) {
             res
                 .status(400)
-                .json({ message: 'Error retrieving bicycles', success: false, error });
+                .json({ message: "Error retrieving bicycles", success: false, error });
         }
     }),
     getProductById: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const product = yield product_service_1.ProductService.getProductById(req.params.productId);
-            if (!product)
-                return res
-                    .status(404)
-                    .json({ message: 'Bicycle not found', success: false });
+            if (!product) {
+                res.status(404).json({
+                    message: "Bicycle not found",
+                    success: false,
+                });
+                return;
+            }
             res.json({
-                message: 'Bicycle retrieved successfully',
+                message: "Bicycle retrieved successfully",
                 success: true,
                 data: product,
             });
         }
         catch (error) {
-            res
-                .status(400)
-                .json({ message: 'Error retrieving bicycle', success: false, error });
+            res.status(400).json({
+                message: "Error retrieving bicycle",
+                success: false,
+                error,
+            });
         }
     }),
     updateProduct: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const updatedProduct = yield product_service_1.ProductService.updateProduct(req.params.productId, req.body);
             res.json({
-                message: 'Bicycle updated successfully',
+                message: "Bicycle updated successfully",
                 success: true,
                 data: updatedProduct,
             });
@@ -73,18 +78,18 @@ exports.ProductController = {
         catch (error) {
             res
                 .status(400)
-                .json({ message: 'Error updating bicycle', success: false, error });
+                .json({ message: "Error updating bicycle", success: false, error });
         }
     }),
     deleteProduct: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             yield product_service_1.ProductService.deleteProduct(req.params.productId);
-            res.json({ message: 'Bicycle deleted successfully', success: true });
+            res.json({ message: "Bicycle deleted successfully", success: true });
         }
         catch (error) {
             res
                 .status(400)
-                .json({ message: 'Error deleting bicycle', success: false, error });
+                .json({ message: "Error deleting bicycle", success: false, error });
         }
     }),
 };
