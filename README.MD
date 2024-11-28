@@ -4,6 +4,10 @@ A backend application for managing a bicycle store. Built with **TypeScript**, *
 
 ---
 
+## 🚀 Live Demo
+
+Check out the live API [here](https://bi-cycle.vercel.app/).
+
 ## **Features**
 
 - **Product Management:**
@@ -80,4 +84,3 @@ src/
 | `/api/orders/revenue` | GET    | Calculate total revenue |
 
 
-# Live Link - https://bi-cycle.vercel.app/
